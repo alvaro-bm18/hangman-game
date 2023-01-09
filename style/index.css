@@ -1,0 +1,167 @@
+@font-face {
+    font-family: 'SpaceMono-Bold';
+    src: url('./SpaceMono-Bold.ttf') format('truetype');
+    font-weight: normal;
+}
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+button{
+    font-family: 'SpaceMono-Bold';
+    cursor: pointer;
+}
+textarea{
+    border: none;
+    outline: none;
+    resize: none;
+    width: 280px;
+    height: 280px;
+    color: white;
+    font-size: 14pt;
+    font-weight: bold;
+    background-color: #000;
+}
+body,
+#root{
+    display: flex;
+    align-content: center;
+    justify-content: center;
+    background-color: #000;
+    font-family: 'SpaceMono-Bold';
+}
+
+#root{
+    flex-flow: column wrap;
+    background-color: black;
+    width: 480px;
+    height: 100vh;
+    overflow: hidden;
+}
+
+#game-visuals>h2,
+#game_ini_lightbox,
+#attemps_container{
+    color: white;
+}
+
+#game_ini_lightbox>h2::first-letter{
+    box-shadow: 0 2pt 0 0 white!important;
+}
+
+#game_ini_lightbox>h6{
+    margin-bottom: 10pt;
+}
+#buttons-control{
+    display: flex;
+    height: 28pt;
+    flex-flow: row nowrap;
+    justify-content: space-between;
+}
+#buttons-control>button{
+    padding: 0 4pt;
+    font-size: 12pt;
+    color: lightgray;
+    letter-spacing: 1pt;
+    background-color: #222;
+    border: 1pt solid #888;
+    border-radius: 4pt;
+}
+
+#cover_graph_hangman{
+    margin-bottom: 50pt;
+    transform: rotate(-15deg);
+}
+
+#alphabet-option{
+    width: 100%;
+    height: calc(50pt * 2);
+    display: flex;
+    flex-flow: row wrap;
+    align-content: center;
+    justify-content: center;
+    gap: 10pt;
+}
+.letter{
+    display: flex;
+    align-content: center;
+    justify-content: center;
+    width: 26pt;
+    height: 26pt;
+    padding: 0;
+    font-size: 14pt;
+    color: lightgray;
+    background-color: #222;
+    border: 1pt solid #888;
+    border-radius: 4pt;
+}
+.letter:hover,
+#buttons-control>button:hover{
+    color: white;
+    background-color: #111;
+    border: 1pt solid #777;
+}
+.letter:disabled,
+#buttons-control>button:active{
+    color: gray;
+    background-color: #333;
+    border: 1pt solid #999;
+}
+.win{color: lightgreen !important;}
+.lose{color: tomato !important;}
+#game-visuals{
+    position: relative;
+    display: none;
+    flex-flow: column nowrap;
+    align-items: center;
+}
+.word_container{
+    width: 100%;
+    height: 100px;
+}
+#word{
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-between;
+    color: white;
+    text-align: center;
+    font-size: 24pt;
+}
+#word > span{
+    padding: 2pt 3pt;
+    box-shadow: inset 0 -2pt 0 0 white;
+}
+#lightbox_message{
+    position: fixed;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    width: 100vw;
+    height: 100vh;
+    background: #3C3C3C2B;
+    border-radius: 16px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(2.2px);
+    -webkit-backdrop-filter: blur(12.1px);
+    z-index: 10;
+}
+#message_game{
+    display: flex;
+    flex-flow: column nowrap;
+    align-items: center;
+    justify-content: space-around;
+    width: 250pt;
+    height: 200pt;
+    color: white;
+    background-color: #111;
+    border: 1pt solid #777;
+    border-radius: 4pt;
+}
+.normal_btn{
+    padding: 4pt;
+    color: lightgray;
+    background-color: #222;
+    border: 1pt solid #888;
+    border-radius: 4pt;
+}

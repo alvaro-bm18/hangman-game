@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="style/index.css" rel="stylesheet">
+    <title>Hangman Game</title>
+</head>
+
+<body>
+    <div id="lightbox_message">
+        <div id="message_game">
+            <h2 class="message"></h2>
+            <div class="face"></div>
+            <span>la palabra era: <h4 class="word-showed"></h4></span>
+            <div>
+                <button id="new-game" class="normal_btn">nuevo juego</button>
+            </div>
+        </div>
+    </div>
+    <div id="root">
+        <div id="game_ini_lightbox">
+            <h2>hangman</h2>
+            <div>
+                <textarea id="cover_graph_hangman" disabled></textarea>
+            </div>
+            <h6>select a mode:</h6>
+            <div id="buttons-control">
+                <button id="btn_facil">fácil</button>
+                <button id="btn_normal">normal</button>
+                <button id="btn_dificil">dificil</button>
+            </div>
+        </div>
+        <div id="game-visuals">
+            <h2>hangman</h2>
+            <textarea id="hangman_graph" disabled></textarea>
+            <div class="word_container">
+                <div id="attemps_container">intentos: <span id="attemps"></span></div>
+                <div id="word"></div>
+            </div>
+            <div id="alphabet-option"></div>
+        </div>
+    </div>
+    <script src="script/index.js" type="module"></script>
+</body>
+
+</html>
