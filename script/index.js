@@ -12,9 +12,47 @@ const $cover_container = $('#game_ini_lightbox');
 const $game_container = $('#game-visuals');
 const lightBox = $('#lightbox_message');
 
+const $toggleLangButton = $('#lang');
+const $btnEasy = $('#btn_EASY');
+const $btnNorm = $('#btn_NORMAL');
+const $btnHard = $('#btn_HARD');
+
+const setLang = (lang) => {
+    document.getElementsByTagName('html')[0].lang = lang;
+
+    const showWord = {'es':'la palabra era','en':'the word was'};
+    const btnNewGame = {'es':'juego nuevo','en':'new match'};
+    const btnLang = {'es': '🇲🇽 ES', 'en':'🇺🇸 EN'};
+    const btnLangTittle = {'es': 'change to English', 'en': 'cambiar a español'};
+    const instruction = {'es': 'Selecciona modo de juego:','en':'Select game mode:'};
+    const btnMODE = [{'es':'fácil', 'en':'easy'}, {'es' : 'normal', 'en': 'normal'}, {'es':'dificil', 'en':'hard'}];
+    const attemp = {'es':'intentos','en':'attemps'};
+
+    $('.title-show-word').innerText = showWord[lang];
+    $('#new-game').innerText = btnNewGame[lang];
+    $('#lang').innerText = btnLang[lang];
+    $('#lang').title = btnLangTittle[lang];
+    $('.main-instruction').innerText = instruction[lang];
+
+    $btnEasy.innerText = btnMODE[0][lang];
+    $btnNorm.innerText = btnMODE[1][lang];
+    $btnHard.innerText = btnMODE[2][lang];
+
+    $('.innerAttemps').innerText = attemp[lang];
+};
+
+const toggleLang = () => {
+    const currentLang = document.getElementsByTagName('html')[0].lang;
+    if(currentLang === 'es'){
+        setLang('en');
+    }else{
+        setLang('es');
+    }
+};
+
 const setCover = () => {
     $cover.value = hangman_stick.join('\n');
-    Object.keys(HANG_PARTS).map( (part,ind) => {
+    Object.keys(HANG_PARTS).map((part, ind) => {
         let hangman_graph = $cover.value.split('\n');
         HANG_PARTS[part].map(partArray => {
             hangman_graph[partArray[0]] += partArray[1];
@@ -28,7 +66,7 @@ const addPartHangman = (attemp) => {
     let parts = Object.keys(HANG_PARTS);
     let partItself = HANG_PARTS[parts[5 - attemp]];
 
-    partItself.map( part => textHangman[part[0]] += part[1] );
+    partItself.map(part => textHangman[part[0]] += part[1]);
     $hang_graph.value = textHangman.join('\n');
 };
 const updateMessage = (status, word) => {
@@ -36,7 +74,13 @@ const updateMessage = (status, word) => {
         lightBox.style.display = 'flex';
 
         const msg = $('.message');
-        msg.innerText = `¡Has ${status === true ? 'ganado' : 'perdido'}!`;
+
+        const current = document.getElementsByTagName('html')[0].lang;
+        const MSG = { 'es' : ['¡Has','ganado','perdido'], 'en' : ['You\'ve', 'won', 'loose']};
+
+        msg.innerText = `${MSG[current][0]} ${status === true ? MSG[current][1] : MSG[current][2]}!`;
+
+
         const face = $('.face');
         face.innerText = status === true ? '\\ (* u *) /' : '_(x - x)_';
         const word_show = $('.word-showed');
@@ -103,7 +147,10 @@ const game = (function () {
             user_word = [];
             shadow_word = [];
 
-            let wordCollection = WORDS[difficulty];
+            let currentLang = document.getElementsByTagName('html')[0].lang;
+
+            console.log();
+            let wordCollection = WORDS[difficulty][currentLang];
             word = wordCollection[Math.floor(Math.random() * wordCollection.length)];
             word = word.toUpperCase();
 
@@ -138,8 +185,12 @@ const game = (function () {
     };
 })();
 
-click($('#btn_facil'), () => { game.setDifficulty(0); });
-click($('#btn_normal'), () => { game.setDifficulty(1); });
-click($('#btn_dificil'), () => { game.setDifficulty(2); });
-click($('#new-game'), () => {location.reload()});
-(() => {setCover();})();
+click($btnEasy, () => { game.setDifficulty(0); });
+click($btnNorm, () => { game.setDifficulty(1); });
+click($btnHard, () => { game.setDifficulty(2); });
+click($('#new-game'), () => { location.reload() });
+click($toggleLangButton, ()=>{ toggleLang(); });
+(() => {
+    setLang('en');
+    setCover();
+})();

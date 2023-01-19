@@ -42,8 +42,22 @@ body,
 
 #game-visuals>h2,
 #game_ini_lightbox,
-#attemps_container{
+#attemps_container,
+#game_ini_lightbox h2>button{
     color: white;
+}
+
+#game_ini_lightbox>h2{
+    position: relative;
+}
+#game_ini_lightbox h2>button{
+    position: absolute;
+    right: 0;
+    padding: 4pt;
+    z-index: 20;
+    border: 1px solid lightgray;
+    border-radius: 3pt;
+    background-color: #000;
 }
 
 #game_ini_lightbox>h2::first-letter{
