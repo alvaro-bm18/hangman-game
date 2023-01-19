@@ -25,7 +25,7 @@ const setLang = (lang) => {
     const btnLang = {'es': '🇲🇽 ES', 'en':'🇺🇸 EN'};
     const btnLangTittle = {'es': 'change to English', 'en': 'cambiar a español'};
     const instruction = {'es': 'Selecciona modo de juego:','en':'Select game mode:'};
-    const btnMODE = [{'es':'fácil', 'en':'easy'}, {'es' : 'normal', 'en': 'normal'}, {'es':'dificil', 'en':'hard'}];
+    const btnMODE = [{'es':'fácil', 'en':'easy'}, {'es' : 'normal', 'en': 'normal'}, {'es':'difícil', 'en':'hard'}];
     const attemp = {'es':'intentos','en':'attemps'};
 
     $('.title-show-word').innerText = showWord[lang];
