@@ -191,6 +191,6 @@ click($btnHard, () => { game.setDifficulty(2); });
 click($('#new-game'), () => { location.reload() });
 click($toggleLangButton, ()=>{ toggleLang(); });
 (() => {
-    setLang('en');
+    setLang('es');
     setCover();
 })();
